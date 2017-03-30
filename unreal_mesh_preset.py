@@ -59,8 +59,16 @@ class UnrealMeshMenu(bpy.types.Menu):
 	def draw(self, context):
 		layout = self.layout
 		# layout.operator_context = 'INVOKE_REGION_WIN'
+		layout.operator("mesh.add_unreal_cube", text="Plane", icon='MESH_CUBE')
 		layout.operator("mesh.add_unreal_cube", text="Cube", icon='MESH_CUBE')
-		layout.operator("mesh.add_unreal_sphere", text="Sphere", icon='MESH_UVSPHERE')
+		layout.operator("mesh.add_unreal_sphere", text="Circle", icon='MESH_UVSPHERE')
+		layout.operator("mesh.add_unreal_sphere", text="UV Sphere", icon='MESH_UVSPHERE')
+		layout.operator("mesh.add_unreal_cube", text="Ico Sphere", icon='MESH_CUBE')
+		layout.operator("mesh.add_unreal_sphere", text="Cylinder", icon='MESH_UVSPHERE')
+		layout.operator("mesh.add_unreal_cube", text="Cone", icon='MESH_CUBE')
+		layout.operator("mesh.add_unreal_sphere", text="Torus", icon='MESH_UVSPHERE')
+		layout.operator("mesh.add_unreal_cube", text="Grid", icon='MESH_CUBE')
+		layout.operator("mesh.add_unreal_sphere", text="Monkey", icon='MESH_UVSPHERE')
 		# layout.menu(UnrealEngine_Objects.bl_idname, text="Unreal mesh")
 
 addon_keymaps = []
