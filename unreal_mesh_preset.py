@@ -54,7 +54,7 @@ class add_unreal_cube(bpy.types.Operator):
 
 class add_unreal_circle(bpy.types.Operator):
 	"""create circle mesh"""
-	bl_idname = "mesh.add_unreal_cube"
+	bl_idname = "mesh.add_unreal_circle"
 	bl_label = "UnrealCircle"
 	bl_options = {'REGISTER', 'UNDO'}
 
