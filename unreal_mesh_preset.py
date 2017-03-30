@@ -3,7 +3,7 @@ bl_info = {
 	"author": "Nexus Studio",
 	"version": (0, 2),
 	"blender": (2, 78),
-	"location": "View3D -> E key",
+	"location": "View3D -> shift+A -> Mesh",
 	"description": "Description",
 	"warning": "",
 	"wiki_url": "none",
