@@ -1,5 +1,5 @@
 bl_info = {
-	"name": "Add mesh for unreal engine 4",
+	"name": "Unreal Mesh Preset",
 	"author": "Nexus Studio",
 	"version": (0, 1),
 	"blender": (2, 78),
