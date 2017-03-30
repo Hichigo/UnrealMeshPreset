@@ -183,7 +183,7 @@ class add_unreal_monkey(bpy.types.Operator):
 
 class UnrealMeshMenu(bpy.types.Menu):
 	bl_idname = "UnrealMeshMenu"
-	bl_label = "Add unreal mesh"
+	bl_label = "Unreal mesh"
 
 	def draw(self, context):
 		layout = self.layout
@@ -196,52 +196,12 @@ class UnrealMeshMenu(bpy.types.Menu):
 		layout.operator("mesh.add_unreal_cylinder", text="Cylinder", icon='MESH_CYLINDER')
 		layout.operator("mesh.add_unreal_cone", text="Cone", icon='MESH_CONE')
 		layout.operator("mesh.add_unreal_torus", text="Torus", icon='MESH_TORUS')
+		layout.separator()
 		layout.operator("mesh.add_unreal_grid", text="Grid", icon='MESH_GRID')
 		layout.operator("mesh.add_unreal_monkey", text="Monkey", icon='MESH_MONKEY')
-		# layout.menu("UnrealMeshMenu")
 
-# class custom_primitive(bpy.types.Operator):
-# 	bl_idname = "mesh.custom_primitive"
-# 	bl_label = "Unreal submenu"
-# 	bl_options = {'REGISTER', 'UNDO'}
-#
-# 	def draw(self, context):
-# 		layout = self.layout
-# 		# layout.menu("UnrealMeshMenu")
-# 		layout.operator("mesh.add_unreal_monkey", text="Monkey", icon='MESH_MONKEY')
-#
-# 	def execute(self, context):
-# 		return {'FINISHED'}
-#
-# 	@classmethod
-# 	def poll(cls, context):
-# 		return bpy.context.mode == 'OBJECT'
-
-def menu_separator(self, context):
-	self.layout.separator()
-
-def menu_unreal_plane(self, context):
-	self.layout.operator(add_unreal_plane.bl_idname, text="Unreal Plane", icon='MESH_PLANE')
-def menu_unreal_cube(self, context):
-	self.layout.operator(add_unreal_cube.bl_idname, text="Unreal Cube", icon='MESH_CUBE')
-def menu_unreal_circle(self, context):
-	self.layout.operator(add_unreal_circle.bl_idname, text="Unreal Circle", icon='MESH_CIRCLE')
-def menu_unreal_uv_sphere(self, context):
-	self.layout.operator(add_unreal_uv_sphere.bl_idname, text="Unreal UV Sphere", icon='MESH_UVSPHERE')
-def menu_unreal_ico_sphere(self, context):
-	self.layout.operator(add_unreal_ico_sphere.bl_idname, text="Unreal Ico Sphere", icon='MESH_ICOSPHERE')
-def menu_unreal_cylinder(self, context):
-	self.layout.operator(add_unreal_cylinder.bl_idname, text="Unreal Cylinder", icon='MESH_CYLINDER')
-def menu_unreal_cone(self, context):
-	self.layout.operator(add_unreal_cone.bl_idname, text="Unreal Cone", icon='MESH_CONE')
-def menu_unreal_torus(self, context):
-	self.layout.operator(add_unreal_torus.bl_idname, text="Unreal Torus", icon='MESH_TORUS')
-def menu_unreal_grid(self, context):
-	self.layout.operator(add_unreal_grid.bl_idname, text="Unreal Grid", icon='MESH_GRID')
-def menu_unreal_monkey(self, context):
-	self.layout.operator(add_unreal_monkey.bl_idname, text="Unreal Monkey", icon='MESH_MONKEY')
-
-
+def submenu(self, context):
+	self.layout.menu("UnrealMeshMenu", icon='OUTLINER_OB_MESH')
 
 # addon_keymaps = []
 # keymapsList = [
@@ -256,17 +216,7 @@ def register():
 	# bpy.utils.register_class(UnrealMeshSubmenu)
 	bpy.utils.register_module(__name__)
 
-	bpy.types.INFO_MT_mesh_add.append(menu_separator)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_plane)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_cube)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_circle)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_uv_sphere)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_ico_sphere)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_cylinder)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_cone)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_torus)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_grid)
-	bpy.types.INFO_MT_mesh_add.append(menu_unreal_monkey)
+	bpy.types.INFO_MT_add.prepend(submenu)
 
 	# kc = bpy.context.window_manager.keyconfigs.addon
 	# if kc:
@@ -280,17 +230,8 @@ def unregister():
 	# bpy.utils.unregister_class(UnrealMeshSubmenu)
 	bpy.utils.unregister_module(__name__)
 
-	bpy.types.INFO_MT_mesh_add.remove(menu_separator)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_plane)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_cube)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_circle)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_uv_sphere)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_ico_sphere)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_cylinder)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_cone)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_torus)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_grid)
-	bpy.types.INFO_MT_mesh_add.remove(menu_unreal_monkey)
+	bpy.types.INFO_MT_add.remove(submenu)
+
 
 	# wm = bpy.context.window_manager
 	# if wm.keyconfigs.addon:
