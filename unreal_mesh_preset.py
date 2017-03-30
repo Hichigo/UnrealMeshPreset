@@ -19,8 +19,25 @@ def uv_create():
 	bpy.ops.mesh.uv_texture_add()
 	bpy.context.scene.objects.active.data.uv_layers[1].name = 'UV_Lightpack'
 
+class add_unreal_plane(bpy.types.Operator):
+	"""create plane mesh"""
+	bl_idname = "mesh.add_unreal_plane"
+	bl_label = "UnrealPlane"
+	bl_options = {'REGISTER', 'UNDO'}
+
+	def execute(self, context):
+		bpy.ops.mesh.primitive_plane_add()
+		bpy.context.scene.objects.active.name = "SM_Mesh"
+		uv_create()
+		return {'FINISHED'}
+
+	@classmethod
+	def poll(cls, context):
+		return bpy.context.mode == 'OBJECT'
+
+
 class add_unreal_cube(bpy.types.Operator):
-	"""the alignment along the y-axis in node editor"""
+	"""create cube mesh"""
 	bl_idname = "mesh.add_unreal_cube"
 	bl_label = "UnrealCube"
 	bl_options = {'REGISTER', 'UNDO'}
@@ -36,9 +53,9 @@ class add_unreal_cube(bpy.types.Operator):
 		return bpy.context.mode == 'OBJECT'
 
 class add_unreal_uv_sphere(bpy.types.Operator):
-	"""the alignment along the y-axis in node editor"""
+	"""create uv sphere mesh"""
 	bl_idname = "mesh.add_unreal_uv_sphere"
-	bl_label = "UnrealSphere"
+	bl_label = "UnrealUVSphere"
 	bl_options = {'REGISTER', 'UNDO'}
 
 	def execute(self, context):
@@ -58,7 +75,7 @@ class UnrealMeshMenu(bpy.types.Menu):
 
 	def draw(self, context):
 		layout = self.layout
-		# layout.operator_context = 'INVOKE_REGION_WIN'
+
 		layout.operator("mesh.add_unreal_plane", text="Plane", icon='MESH_PLANE')
 		layout.operator("mesh.add_unreal_cube", text="Cube", icon='MESH_CUBE')
 		layout.operator("mesh.add_unreal_circle", text="Circle", icon='MESH_CIRCLE')
@@ -69,7 +86,6 @@ class UnrealMeshMenu(bpy.types.Menu):
 		layout.operator("mesh.add_unreal_torus", text="Torus", icon='MESH_TORUS')
 		layout.operator("mesh.add_unreal_grid", text="Grid", icon='MESH_GRID')
 		layout.operator("mesh.add_unreal_monkey", text="Monkey", icon='MESH_MONKEY')
-		# layout.menu(UnrealEngine_Objects.bl_idname, text="Unreal mesh")
 
 addon_keymaps = []
 keymapsList = [
