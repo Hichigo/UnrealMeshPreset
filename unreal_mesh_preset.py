@@ -52,6 +52,23 @@ class add_unreal_cube(bpy.types.Operator):
 	def poll(cls, context):
 		return bpy.context.mode == 'OBJECT'
 
+class add_unreal_circle(bpy.types.Operator):
+	"""create circle mesh"""
+	bl_idname = "mesh.add_unreal_cube"
+	bl_label = "UnrealCircle"
+	bl_options = {'REGISTER', 'UNDO'}
+
+	def execute(self, context):
+		bpy.ops.mesh.primitive_circle_add()
+		bpy.context.scene.objects.active.name = "SM_Mesh"
+		uv_create()
+		return {'FINISHED'}
+
+	@classmethod
+	def poll(cls, context):
+		return bpy.context.mode == 'OBJECT'
+
+
 class add_unreal_uv_sphere(bpy.types.Operator):
 	"""create uv sphere mesh"""
 	bl_idname = "mesh.add_unreal_uv_sphere"
