@@ -85,7 +85,101 @@ class add_unreal_uv_sphere(bpy.types.Operator):
 	def poll(cls, context):
 		return bpy.context.mode == 'OBJECT'
 
+class add_unreal_ico_sphere(bpy.types.Operator):
+	"""create ico sphere mesh"""
+	bl_idname = "mesh.add_unreal_ico_sphere"
+	bl_label = "UnrealIcoSphere"
+	bl_options = {'REGISTER', 'UNDO'}
 
+	def execute(self, context):
+		bpy.ops.mesh.primitive_ico_sphere_add()
+		bpy.context.scene.objects.active.name = "SM_Mesh"
+		uv_create()
+		return {'FINISHED'}
+
+	@classmethod
+	def poll(cls, context):
+		return bpy.context.mode == 'OBJECT'
+
+class add_unreal_cylinder(bpy.types.Operator):
+	"""create cylinder mesh"""
+	bl_idname = "mesh.add_unreal_cylinder"
+	bl_label = "UnrealCylinder"
+	bl_options = {'REGISTER', 'UNDO'}
+
+	def execute(self, context):
+		bpy.ops.mesh.primitive_cylinder_add()
+		bpy.context.scene.objects.active.name = "SM_Mesh"
+		uv_create()
+		return {'FINISHED'}
+
+	@classmethod
+	def poll(cls, context):
+		return bpy.context.mode == 'OBJECT'
+
+class add_unreal_cone(bpy.types.Operator):
+	"""create cone mesh"""
+	bl_idname = "mesh.add_unreal_cone"
+	bl_label = "UnrealCone"
+	bl_options = {'REGISTER', 'UNDO'}
+
+	def execute(self, context):
+		bpy.ops.mesh.primitive_cone_add()
+		bpy.context.scene.objects.active.name = "SM_Mesh"
+		uv_create()
+		return {'FINISHED'}
+
+	@classmethod
+	def poll(cls, context):
+		return bpy.context.mode == 'OBJECT'
+
+class add_unreal_torus(bpy.types.Operator):
+	"""create torus mesh"""
+	bl_idname = "mesh.add_unreal_torus"
+	bl_label = "UnrealTorus"
+	bl_options = {'REGISTER', 'UNDO'}
+
+	def execute(self, context):
+		bpy.ops.mesh.primitive_torus_add()
+		bpy.context.scene.objects.active.name = "SM_Mesh"
+		uv_create()
+		return {'FINISHED'}
+
+	@classmethod
+	def poll(cls, context):
+		return bpy.context.mode == 'OBJECT'
+
+class add_unreal_grid(bpy.types.Operator):
+	"""create grid mesh"""
+	bl_idname = "mesh.add_unreal_grid"
+	bl_label = "UnrealGrid"
+	bl_options = {'REGISTER', 'UNDO'}
+
+	def execute(self, context):
+		bpy.ops.mesh.primitive_grid_add()
+		bpy.context.scene.objects.active.name = "SM_Mesh"
+		uv_create()
+		return {'FINISHED'}
+
+	@classmethod
+	def poll(cls, context):
+		return bpy.context.mode == 'OBJECT'
+
+class add_unreal_monkey(bpy.types.Operator):
+	"""create monkey mesh"""
+	bl_idname = "mesh.add_unreal_monkey"
+	bl_label = "UnrealMonkey"
+	bl_options = {'REGISTER', 'UNDO'}
+
+	def execute(self, context):
+		bpy.ops.mesh.primitive_monkey_add()
+		bpy.context.scene.objects.active.name = "SM_Mesh"
+		uv_create()
+		return {'FINISHED'}
+
+	@classmethod
+	def poll(cls, context):
+		return bpy.context.mode == 'OBJECT'
 
 class UnrealMeshMenu(bpy.types.Menu):
 	bl_label = "Add unreal mesh"
