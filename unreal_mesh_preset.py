@@ -35,9 +35,9 @@ class add_unreal_cube(bpy.types.Operator):
 	def poll(cls, context):
 		return bpy.context.mode == 'OBJECT'
 
-class add_unreal_sphere(bpy.types.Operator):
+class add_unreal_uv_sphere(bpy.types.Operator):
 	"""the alignment along the y-axis in node editor"""
-	bl_idname = "mesh.add_unreal_sphere"
+	bl_idname = "mesh.add_unreal_uv_sphere"
 	bl_label = "UnrealSphere"
 	bl_options = {'REGISTER', 'UNDO'}
 
@@ -59,16 +59,16 @@ class UnrealMeshMenu(bpy.types.Menu):
 	def draw(self, context):
 		layout = self.layout
 		# layout.operator_context = 'INVOKE_REGION_WIN'
-		layout.operator("mesh.add_unreal_cube", text="Plane", icon='MESH_CUBE')
+		layout.operator("mesh.add_unreal_plane", text="Plane", icon='MESH_PLANE')
 		layout.operator("mesh.add_unreal_cube", text="Cube", icon='MESH_CUBE')
-		layout.operator("mesh.add_unreal_sphere", text="Circle", icon='MESH_UVSPHERE')
-		layout.operator("mesh.add_unreal_sphere", text="UV Sphere", icon='MESH_UVSPHERE')
-		layout.operator("mesh.add_unreal_cube", text="Ico Sphere", icon='MESH_CUBE')
-		layout.operator("mesh.add_unreal_sphere", text="Cylinder", icon='MESH_UVSPHERE')
-		layout.operator("mesh.add_unreal_cube", text="Cone", icon='MESH_CUBE')
-		layout.operator("mesh.add_unreal_sphere", text="Torus", icon='MESH_UVSPHERE')
-		layout.operator("mesh.add_unreal_cube", text="Grid", icon='MESH_CUBE')
-		layout.operator("mesh.add_unreal_sphere", text="Monkey", icon='MESH_UVSPHERE')
+		layout.operator("mesh.add_unreal_circle", text="Circle", icon='MESH_CIRCLE')
+		layout.operator("mesh.add_unreal_uv_sphere", text="UV Sphere", icon='MESH_UVSPHERE')
+		layout.operator("mesh.add_unreal_ico_sphere", text="Ico Sphere", icon='MESH_ICOSPHERE')
+		layout.operator("mesh.add_unreal_cylinder", text="Cylinder", icon='MESH_CYLINDER')
+		layout.operator("mesh.add_unreal_cone", text="Cone", icon='MESH_CONE')
+		layout.operator("mesh.add_unreal_torus", text="Torus", icon='MESH_TORUS')
+		layout.operator("mesh.add_unreal_grid", text="Grid", icon='MESH_GRID')
+		layout.operator("mesh.add_unreal_monkey", text="Monkey", icon='MESH_MONKEY')
 		# layout.menu(UnrealEngine_Objects.bl_idname, text="Unreal mesh")
 
 addon_keymaps = []
