@@ -109,8 +109,8 @@ class add_unreal_cylinder(bpy.types.Operator):
 
 	def execute(self, context):
 		bpy.ops.mesh.primitive_cylinder_add()
-		bpy.context.scene.objects.active.name = "SM_Mesh"
-		uv_create()
+		#bpy.context.scene.objects.active.name = "SM_Mesh"
+		#uv_create()
 		return {'FINISHED'}
 
 	@classmethod
